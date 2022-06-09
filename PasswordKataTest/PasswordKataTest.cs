@@ -25,5 +25,13 @@ namespace PasswordKataTest
             bool result = Password.Validation(givenPassword);
             result.Should().Be(true);
         }
+
+        [Test]
+        public void when_password_is_8_characters_or_more_lenght_return_true()
+        {
+            var givenPassword = "aaaaaaaaaaaa";
+            bool result = Password.Validation(givenPassword);
+            result.Should().Be(true);
+        }
     }
 }
