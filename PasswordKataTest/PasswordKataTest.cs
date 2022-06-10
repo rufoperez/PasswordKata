@@ -11,11 +11,11 @@ namespace PasswordKataTest
         }
 
         [Test]
-        public void when_password_is_7_characters_lenght_return_false()
+        public void when_password_is_7_characters_lenght_return_error()
         {
             var givenPassword = "aaaaaaa";
-            bool result = Password.Validation(givenPassword);
-            result.Should().Be(false);
+            Action act = () => Password.Validation(givenPassword);
+            act.Should().Throw<ArgumentException>("Password must be at least 8 characters");
         }
 
         [Test]
