@@ -28,5 +28,13 @@ namespace PasswordKataTest
             string result = Password.Validation(givenPassword);
             result.Should().NotBeEmpty().And.Be("Password must be at least 8 characters\nPassword must contain at least two numbers");
         }
+
+        [Test]
+        public void when_password_not_hava_capitol_letter_return_error()
+        {
+            var givenPassword = "aaaaaa11";
+            string result = Password.Validation(givenPassword);
+            result.Should().NotBeEmpty().And.Be("Password must contain at least one capital letter");
+        }
     }
 }
