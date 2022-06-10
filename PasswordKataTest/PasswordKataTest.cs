@@ -5,11 +5,6 @@ namespace PasswordKataTest
 {
     public class PasswordKataTest
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-
         [Test]
         public void when_password_is_7_characters_lenght_return_error()
         {
@@ -19,19 +14,11 @@ namespace PasswordKataTest
         }
 
         [Test]
-        public void when_password_is_8_characters_lenght_return_true()
+        public void when_password_is_less_than_two_numbers_return_error()
         {
-            var givenPassword = "aaaaaaaa";
-            bool result = Password.Validation(givenPassword);
-            result.Should().Be(true);
-        }
-
-        [Test]
-        public void when_password_is_8_characters_or_more_lenght_return_true()
-        {
-            var givenPassword = "aaaaaaaaaaaa";
-            bool result = Password.Validation(givenPassword);
-            result.Should().Be(true);
+            var givenPassword = "aaaaaaaaaaaaaaaa1";
+            Action act = () => Password.Validation(givenPassword);
+            act.Should().Throw<ArgumentException>("Password must contain at least two numbers");
         }
     }
 }
