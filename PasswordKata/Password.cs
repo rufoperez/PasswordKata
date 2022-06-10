@@ -6,6 +6,6 @@ public class Password
     {
         if (givenPassword.Length >= 8)
             return true;
-        return false;
+        throw new ArgumentException("Password must be at least 8 characters");
     }
 }
