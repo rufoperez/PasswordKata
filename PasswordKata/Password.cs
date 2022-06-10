@@ -2,12 +2,15 @@ namespace PasswordKata;
 
 public class Password
 {
+    private const string NOT_ENOUGH_CHARACTERS_ERROR = "Password must be at least 8 characters";
+    private const string NOT_ENOUGH_NUMBERS_ERROR = "Password must contain at least two numbers";
+
     public static string Validation(string givenPassword)
     {
         var result = string.Empty;
 
         if (givenPassword.Length < 8)
-            result += "Password must be at least 8 characters";
+            result += NOT_ENOUGH_CHARACTERS_ERROR;
 
         var numbersInPassword = 0;
         foreach (char c in givenPassword)
@@ -19,11 +22,9 @@ public class Password
 
         if (numbersInPassword < 2)
           result +=  string.IsNullOrEmpty(result)
-                ? "Password must contain at least two numbers"
-                : "\nPassword must contain at least two numbers";
+                ? NOT_ENOUGH_NUMBERS_ERROR
+                : $"\n{NOT_ENOUGH_NUMBERS_ERROR}";
 
         return result;
-        ;
-
     }
 }
