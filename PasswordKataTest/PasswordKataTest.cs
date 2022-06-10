@@ -30,11 +30,19 @@ namespace PasswordKataTest
         }
 
         [Test]
-        public void when_password_not_hava_capitol_letter_return_error()
+        public void when_password_not_have_capitol_letter_return_error()
         {
             var givenPassword = "aaaaaa11";
             string result = Password.Validation(givenPassword);
             result.Should().NotBeEmpty().And.Be("Password must contain at least one capital letter");
+        }
+
+        [Test]
+        public void when_password_not_have_special_character_return_error()
+        {
+            var givenPassword = "aaAaaa11";
+            string result = Password.Validation(givenPassword);
+            result.Should().NotBeEmpty().And.Be("Password must contain at least one special character");
         }
     }
 }
