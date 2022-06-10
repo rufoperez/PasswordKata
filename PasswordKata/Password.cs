@@ -6,6 +6,7 @@ public class Password
 {
     private const string NOT_ENOUGH_CHARACTERS_ERROR = "Password must be at least 8 characters";
     private const string NOT_ENOUGH_NUMBERS_ERROR = "Password must contain at least two numbers";
+    private const string NOT_CAPITAL_LETTER_ERROR = "Password must contain at least one capital letter";
 
     public static string Validation(string givenPassword)
     {
@@ -14,10 +15,14 @@ public class Password
         var characterError = CheckCharactersInPassword(givenPassword);
         if(!string.IsNullOrEmpty(characterError))
             result.Add(characterError);
+
         var numberError = CheckNumbersInPassword(givenPassword);
         if(!string.IsNullOrEmpty(numberError))
             result.Add(numberError);
 
+        var capitalLetterError = CheckCapitalLetter(givenPassword);
+        if (!string.IsNullOrEmpty(capitalLetterError))
+            result.Add(capitalLetterError);
 
         return ComposeErrorMessage(result);
     }
@@ -59,5 +64,16 @@ public class Password
             return NOT_ENOUGH_NUMBERS_ERROR;
 
         return Empty;
+    }
+
+    private static string CheckCapitalLetter(string givenPassword)
+    {
+        foreach (char c in givenPassword)
+        {
+            if (Char.IsUpper(c))
+                return Empty;
+        }
+
+        return NOT_CAPITAL_LETTER_ERROR;
     }
 }

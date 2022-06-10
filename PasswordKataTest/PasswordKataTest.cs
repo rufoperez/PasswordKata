@@ -8,7 +8,7 @@ namespace PasswordKataTest
         [Test]
         public void when_password_is_7_characters_lenght_return_error()
         {
-            var givenPassword = "aaaaa11";
+            var givenPassword = "Aaaaa11";
             string result = Password.Validation(givenPassword);
             result.Should().NotBeEmpty().And.Be("Password must be at least 8 characters");
         }
@@ -16,7 +16,7 @@ namespace PasswordKataTest
         [Test]
         public void when_password_is_less_than_two_numbers_return_error()
         {
-            var givenPassword = "aaaaaaaaaaaaaaaa1";
+            var givenPassword = "aaaaAaaaaaaaaaaa1";
             string result = Password.Validation(givenPassword);
             result.Should().NotBeEmpty().And.Be("Password must contain at least two numbers");
         }
@@ -24,7 +24,7 @@ namespace PasswordKataTest
         [Test]
         public void when_password_is_less_than_two_numbers_and_less_than_8_characters_return_errors()
         {
-            var givenPassword = "aaaaaa1";
+            var givenPassword = "aAaaaa1";
             string result = Password.Validation(givenPassword);
             result.Should().NotBeEmpty().And.Be("Password must be at least 8 characters\nPassword must contain at least two numbers");
         }
